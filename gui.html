@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VoiceClientGui</title>
+    </head>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+    <body>
+        <div id="container">
+            <h1 class="logo"><img class="logo" src="img/logo.png"><div class="h1shudow"></div></h1>
+                <div id="floatwindow">
+                    <div class="mutlist">
+                            <p class="mut-leaf">Мут лист игроков:</p>
+                            <input class="input-text mut-leaf" type="text" placeholder="Введите никнейм">
+                            <button class="button selector mut-leaf">Ilya_Vasilyev</button>
+                            <div style="text-align: center;">
+                                <button onclick="location.href='#';" class="button">Закрыть</button>
+                            </div>
+                    </div>
+                </div>
+            <div class="boxvoice">
+                <div class="sound">
+                    <img src="img/headphones.png" class="inline-block headphones shadow">
+                    <div class="inline-block soundvolume">
+                        <p class="volume">Громкость звука</p>
+                        <div class="volume">
+                            <input id="range1" min="0" max="100" value="0" type="range" class="slider" oninput="p1.value=value">
+                            <p id="p1" class="light inline-block"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sound">
+                    <img src="img/mic.png" class="mic inline-block shadow">
+                    <div class="inline-block soundvolume">
+                    <p class="volume">Громкость микрофона</p>
+                        <div class="volume">
+                            <input id="range2" min="0" max="100" value="0" type="range" class="slider" oninput="p2.value=value">
+                            <p id="p2" class="p light inline-block"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="boxdevice">
+                <p class="regular">Устройство ввода:</p>
+                <div>
+                    <select class="input-text">
+                        <option class="input-text" value="volvo">Volvo</option>
+                        <option class="input-text" value="saab">Saab</option>
+                        <option class="input-text" value="opel">Opel</option>
+                        <option class="input-text" value="audi">Audi</option>
+                    </select>
+                    <!-- <input class="input-text" type="text" placeholder="Название устройства"> -->
+                    <button class="button mut shadow" onclick="location.href='#floatwindow';">Мут лист</button>
+                </div>
+            </div>
+            <div class="boxmodes alignment">
+                <p>Включение звука</p>
+                <input id="trigger-onoff-sound" type="checkbox" onclick="window.enable_voice(!checked)">
+                <label for="trigger-onoff-sound" class="checker onoff-sound shadow"></label>
+                <div class="sound3D alignment">
+                    <p>3D Звук</p>
+                    <input id="trigger-sound3D" type="checkbox">
+                    <label for="trigger-sound3D" class="checker sound3D shadow"></label>
+                </div>
+            </div>
+            <div class="boxmodes box-flex">
+                <div class="upinputmode">
+                    <div class="alignment">
+                        <p style="color: #dfdfdf;">Режим ввода</p>
+                        <input id="trigger-input-mode" type="checkbox" onclick="hiddeninput()">
+                        <label for="trigger-input-mode" class="checker input-mode shadow"></label>
+                    </div>
+                    <div id="inputmode" class="inputmode" style="visibility: visible;">
+                        <ul class="ul">
+                            <li class="li">
+                                <input type="radio" value="1" id="radio1" name="radio" class="input">
+                                <label for="radio1"><div class="button selector A">По голосу</div></label>
+                            </li>
+                            <li class="li">
+                                <input type="radio" value="2" id="radio2" name="radio" class="input">
+                                <label for="radio2"><div class="button selector A">При удердании</div></label>
+                            </li>
+                            <li class="li">
+                                <input type="radio" value="3" id="radio3" name="radio" class="input">
+                                <label for="radio3"><div class="button selector A">Переключение по клавише</div></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="inline-block keyname">
+                    <div class="alignment">
+                            <p style="color: #dfdfdf;">Назначение клавиш:</p>
+                    </div>
+                    <table class="keyname-space-between">
+                        <tbody>
+                            <tr>
+                                <th class="mic"><img src="img/minmik.png" class="minmic"></th>
+                                <th><p class="button-selection">Говорить</p></th>
+                                <th><button class="inputbutton input-text">X</button></th>
+                            </tr>
+                            <tr>
+                                <th class="radio"><img src="img/radio.png" class="minradio"></th>
+                                <th><p class="button-selection">Говорить в рацию</p></th>
+                                <th><button class="inputbutton input-text">END</button></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="boxmodes end">
+                <button class="button button shadow closebuttonwidth" onclick="window.gui_close()">Закрыть</button>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
