@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html oncontextmenu="return false">
     <head>
         <title>VoiceClientGui</title>
     </head>
     <link href="style.css" type="text/css" rel="stylesheet"/>
-    <body>
+    <body style="background-image: url(img/dsfghdfshsdg.png);">
         <div id="container">
-            <h1 class="logo"><img class="logo" src="img/logo.png"><div class="h1shudow"></div></h1>
-                <div id="floatwindow">
-                    <div class="mutlist">
-                            <p class="mut-leaf">Мут лист игроков:</p>
-                            <input class="input-text mut-leaf" type="text" placeholder="Введите никнейм">
-                            <button class="button selector mut-leaf">Ilya_Vasilyev</button>
-                            <div style="text-align: center;">
-                                <button onclick="location.href='#';" class="button">Закрыть</button>
-                            </div>
-                    </div>
+            <h1 class="logo"><img class="logo" src="img/logo.png"></h1>
+            <div id="floatwindow">
+                <div class="mutlist">
+                        <p class="mut-leaf">Мут лист игроков:</p>
+                        <input class="input-text mut-leaf" type="text" placeholder="Введите никнейм">
+                        <div id="mutListPlayers" class="mutListPlayers"></div>
+                        <div style="text-align: center;">
+                            <button id="mutListCloseButton" class="button">Закрыть</button>
+                        </div>
                 </div>
+            </div>
+            <div id="volumePlayersWindow">
+                <div class="volumeMainWindow" id="volumeMainWindow"></div>
+            </div>
             <div class="boxvoice">
                 <div class="sound">
                     <img src="img/headphones.png" class="inline-block headphones shadow">
                     <div class="inline-block soundvolume">
                         <p class="volume">Громкость звука</p>
                         <div class="volume">
-                            <input id="range1" min="0" max="100" value="0" type="range" class="slider" oninput="p1.value=value">
+                            <input id="range1" min="0" max="100" value="0" type="range" class="slider">
                             <p id="p1" class="light inline-block"></p>
                         </div>
                     </div>
@@ -33,7 +36,7 @@
                     <div class="inline-block soundvolume">
                     <p class="volume">Громкость микрофона</p>
                         <div class="volume">
-                            <input id="range2" min="0" max="100" value="0" type="range" class="slider" oninput="p2.value=value">
+                            <input id="range2" min="0" max="100" value="0" type="range" class="slider">
                             <p id="p2" class="p light inline-block"></p>
                         </div>
                     </div>
@@ -48,26 +51,26 @@
                         <option class="input-text" value="opel">Opel</option>
                         <option class="input-text" value="audi">Audi</option>
                     </select>
-                    <!-- <input class="input-text" type="text" placeholder="Название устройства"> -->
-                    <button class="button mut shadow" onclick="location.href='#floatwindow';">Мут лист</button>
+                    <button class="button mut shadow" id="mutListOpenButton">Мут лист</button>
+                    <button class="button mut shadow" id="volumePlayersButton">Громкость игроков</button>
                 </div>
             </div>
             <div class="boxmodes alignment">
                 <p>Включение звука</p>
-                <input id="trigger-onoff-sound" type="checkbox" onclick="window.enable_voice(!checked)">
-                <label for="trigger-onoff-sound" class="checker onoff-sound shadow"></label>
+                <input id="triggerOnOffSound" type="checkbox">
+                <label for="triggerOnOffSound" class="checker onoff-sound"></label>
                 <div class="sound3D alignment">
                     <p>3D Звук</p>
-                    <input id="trigger-sound3D" type="checkbox">
-                    <label for="trigger-sound3D" class="checker sound3D shadow"></label>
+                    <input id="triggerSound3D" type="checkbox">
+                    <label for="triggerSound3D" class="checker sound3D"></label>
                 </div>
             </div>
             <div class="boxmodes box-flex">
                 <div class="upinputmode">
                     <div class="alignment">
                         <p style="color: #dfdfdf;">Режим ввода</p>
-                        <input id="trigger-input-mode" type="checkbox" onclick="hiddeninput()">
-                        <label for="trigger-input-mode" class="checker input-mode shadow"></label>
+                        <input id="triggerInputMode" type="checkbox">
+                        <label for="triggerInputMode" class="checker input-mode"></label>
                     </div>
                     <div id="inputmode" class="inputmode" style="visibility: visible;">
                         <ul class="ul">
@@ -95,20 +98,81 @@
                             <tr>
                                 <th class="mic"><img src="img/minmik.png" class="minmic"></th>
                                 <th><p class="button-selection">Говорить</p></th>
-                                <th><button class="inputbutton input-text">X</button></th>
+                                <th><button class="inputbutton input-text" id="kiGlobal">X</button></th>
                             </tr>
                             <tr>
                                 <th class="radio"><img src="img/radio.png" class="minradio"></th>
                                 <th><p class="button-selection">Говорить в рацию</p></th>
-                                <th><button class="inputbutton input-text">END</button></th>
+                                <th><button class="inputbutton input-text" id="kiRadio">END</button></th>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="boxmodes end">
-                <button class="button button shadow closebuttonwidth" onclick="window.gui_close()">Закрыть</button>
+                <button class="button button shadow closebuttonwidth" id="gui_close">Закрыть</button>
             </div>
+        </div>
+        <div id="drag">
+            <div  id="owerlay" class="owerlay">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><img class="owerlayRadiomin" src="img/radiomin.png"></th>
+                            <th><p class="owerlayRoomName" id="owerlayRoomName">Общий</p></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><img class="owerlayRadiominImg" src="img/owerlayVolume.png"></th>
+                            <th><p class="owerlayPlayer"  id="owerlayPlayer">Vf</p></th>
+                            <th><p class="owerlayPlayerDistance"  id="owerlayPlayerDistance">100m.</p></th>
+                        </tr>
+                        <tr>
+                            <th><img class="owerlayRadiominImg" src="img/owerlayVolume.png"></th>
+                            <th><p class="owerlayPlayer"  id="owerlayPlayer">Vf</p></th>
+                            <th><p class="owerlayPlayerDistance"  id="owerlayPlayerDistance">100m.</p></th>
+                        </tr>
+                        <tr>
+                            <th><img class="owerlayRadiominImg" src="img/owerlayVolume.png"></th>
+                            <th><p class="owerlayPlayer"  id="owerlayPlayer">Vf</p></th>
+                            <th><p class="owerlayPlayerDistance"  id="owerlayPlayerDistance">100m.</p></th>
+                        </tr>
+                        <tr>
+                            <th><img class="owerlayRadiominImg" src="img/owerlayVolume.png"></th>
+                            <th><p class="owerlayPlayer"  id="owerlayPlayer">Vf</p></th>
+                            <th><p class="owerlayPlayerDistance"  id="owerlayPlayerDistance">100m.</p></th>
+                        </tr>
+                        <tr>
+                            <th><img class="owerlayRadiominImg" src="img/owerlayVolume.png"></th>
+                            <th><p class="owerlayPlayer"  id="owerlayPlayer">Vf</p></th>
+                            <th><p class="owerlayPlayerDistance"  id="owerlayPlayerDistance">100m.</p></th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><img class="owerlayRadiomin" src="img/radiomin.png"></th>
+                            <th><p class="owerlayRoomName" id="owerlayRoomName">Рация</p></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><img class="owerlayRadiominImg" src="img/owerlayVolume.png"></th>
+                            <th><p class="owerlayPlayer"  id="owerlayPlayer">Vf</p></th>
+                            <th><p class="owerlayPlayerDistance"  id="owerlayPlayerDistance">[текст]</p></th>
+                        </tr>
+                        <tr>
+                            <th><img class="owerlayRadiominImg" src="img/owerlayVolume.png"></th>
+                            <th><p class="owerlayPlayer"  id="owerlayPlayer">Vf</p></th>
+                            <th><p class="owerlayPlayerDistance"  id="owerlayPlayerDistance">[текст]</p></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <img class="owerlayMicrophone" id="owerlayMicrophone" src="img/owerlayMicrophone.png">
+            <img class="owerlayVolumeOn" id="owerlayVolumeOn" src="img/owerlayVolumeOn.png">
         </div>
         <script src="main.js"></script>
     </body>

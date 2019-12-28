@@ -41,6 +41,14 @@ th {
     font-family: TTNorms-Regular;
     src: url(TT-Norms-Fonts/TTNorms-Regular.otf);
 }
+@font-face {
+    font-family: TTNorms-ExtraBold;
+    src: url(TT-Norms-Fonts/TTNorms-ExtraBold.otf);
+}
+@font-face {
+    font-family: TTNorms-Bold;
+    src: url(TT-Norms-Fonts/TTNorms-Bold.otf);
+}
 p {
     margin: 0;
     font-family: TTNorms-Regular;
@@ -128,8 +136,8 @@ h1.logo {
     justify-content: center;
 }
 img.logo {
-    width: 8%;
-    margin-top: 3%;
+    width: 14%;
+    margin-top: 2%;
 }
 img.headphones {
     padding: 3%;
@@ -169,13 +177,13 @@ input,button,select {
     border-radius: 10px;
     font: 0.8em TTNorms-Regular;
     color: #949494;
-    width: 44%;
+    width: 14vh;
     height: 26px;
 }
 input.mut-leaf {
     margin-left: 10%;
     margin-bottom: 7%;
-    width: 70%;
+    width: 22.5vh;
 }
 input.checkbox {
     margin-left: 2%;
@@ -233,10 +241,10 @@ label.input-mode {
     height: 18px;
 }
 label.checker {
-    background-color: #eb2e4a;
-    border: solid 4px #eb2e4a;
+    background-color: #4c2027;
+    border: solid 4px #4c2027;
     border-radius: 9px;
-    background-image: url(img/voiceon.png);
+    background-image: url(img/voiceoff.png);
     background-position: center;
     background-size: 62%;
     background-repeat: no-repeat;
@@ -244,37 +252,38 @@ label.checker {
 }
 label.checker.input-mode {
     margin-left: 13%;
-    background-image: url(img/trigger-input-mode-off.png);
-}
-#trigger-onoff-sound {
-    display: none;
-}
-#trigger-onoff-sound:checked + .checker {
-    background-image: url(img/voiceoff.png);
-    background-color: #4c2027;
-    border: solid 4px #4c2027;
-    background-size: 55%;
-    box-shadow: none;
-}
-#trigger-sound3D {
-    display: none;
-}
-#trigger-sound3D:checked + .checker {
-    background-image: url(img/voiceoff.png);
-    background-color: #4c2027;
-    border: solid 4px #4c2027;
-    background-size: 55%;
-    box-shadow: none;
-}
-#trigger-input-mode {
-    display: none;
-}
-#trigger-input-mode:checked + .checker {
     background-image: url(img/trigger-input-mode-on.png);
-    background-color: #4c2027;
-    border: solid 4px #4c2027;
+}
+#triggerOnOffSound {
+    display: none;
+}
+#triggerOnOffSound:checked + .checker {
+    background-image: url(img/voiceon.png);
+    background-color: #eb2e4a;
+    border: solid 4px #eb2e4a;
+    background-size: 62%;
+    box-shadow: 4px 4px 35px 12px rgba(189,0,40,0.4);
+}
+#triggerSound3D {
+    display: none;
+}
+#triggerSound3D:checked + .checker {
+    background-image: url(img/voiceon.png);
+    background-color: #eb2e4a;
+    border: solid 4px #eb2e4a;
+    background-size: 62%;
+    box-shadow: 4px 4px 35px 12px rgba(189,0,40,0.4);
+}
+#triggerInputMode {
+    display: none;
+}
+#triggerInputMode:checked + .checker {
+    background-image: url(img/trigger-input-mode-off.png);
+    background-color: #eb2e4a;
+    border: solid 4px #eb2e4a;
     background-size: 55%;
     box-shadow: none;
+    box-shadow: 4px 4px 35px 12px rgba(189,0,40,0.4);
 }
 .ul {
     list-style: none;
@@ -290,7 +299,7 @@ label.checker.input-mode {
     display: none;
 }
 button.mut {
-    margin-left: 4%;
+    margin-left: 3%;
 }
 .selector {
     padding: 2% 7%;
@@ -314,8 +323,8 @@ button.mut {
     border-radius: 10px;
     font: 0.7em TTNorms-Regular;
     color: #FFFFFF;
-    background-color: #ca314a;
-    border:solid 1px #ca314a;
+    background-color: #eb2e4a;
+    border:solid 1px #eb2e4a;
     box-shadow: 4px 4px 35px 12px rgba(189,0,40,0.4);
     white-space: nowrap;
 }
@@ -330,8 +339,8 @@ button.mut {
     border-radius: 10px;
     margin-bottom: 4%;
     margin-left: 10%;
-    width: 77%;
-    height: 9%;
+    width: 25vh;
+    height: 19%;
     padding: 0 4%;
 }
 .inputbutton.input-text:active {
@@ -350,10 +359,26 @@ button.mut {
     padding: 0 3%;
     box-shadow: 4px 4px 35px 12px rgba(189,0,40,0.4);
 }
+.bactive {
+    text-decoration:none;
+    font:0.8em TTNorms-Regular;
+    color: #FFFFFF;
+    background-color: #ca314a;
+    border:solid 1px #ca314a;
+    border-radius: 10px;
+    margin-bottom: 4%;
+    margin-left: 11%;
+    text-align: center;
+    white-space: nowrap;
+    width: 49%;
+    height: 27px;
+    padding: 0 3%;
+    box-shadow: 4px 4px 35px 12px rgba(189,0,40,0.4);
+}
 button.mut-leaf {
     margin-left: 10%;
-    width: 77%;
-    height: 9%;
+    width: 25vh;
+    height: 19%;
     padding: 0 4%;
 }
 th.mic {
@@ -389,8 +414,8 @@ th.radio {
     display: none;
 }
 .mutlist {
-    width: 30vh;
-    height: 31vh;
+    width: 32vh;
+    height: 33vh;
     min-height: 268px;
     min-width: 281px;
     position: absolute;
@@ -402,9 +427,6 @@ th.radio {
     background-color: #1b1a1a;
     background: linear-gradient(145deg, #000000 0%, #63232e 280%);
     box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.75);
-}
-#floatwindow:target {
-    display: block;
 }
 .close {
     align-items: center;
@@ -433,4 +455,224 @@ th.radio {
     height: 4.1vh;
     width: 4vh;
     margin-top: 26px;
+}
+.mutListPlayers {
+    margin-bottom: 0.4vh;
+    height: 43%;
+    width: 94%;
+    overflow: auto;
+}
+#volumePlayersWindow {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    display: none;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ca314a;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+}
+::-webkit-scrollbar-track {
+    background: #0d0d0d;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+.volumeMainWindow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: scroll;
+    color: white;
+    height: 76vh;
+    width: 70vh;
+    min-width: 547px;
+    min-height: 610px;
+    background: radial-gradient(circle farthest-corner at 700% 100%, #eb2e4a 0%, #000000 100%);
+}
+.voiceroom {
+    margin-left: 5vh;
+    margin-top: 5vh;
+    height: 20vh;
+    width: 60vh;
+    min-width: 483px;
+    background: radial-gradient(farthest-corner at 78% 128%, #eb2e4a -138%, #000000 116%);
+}
+.voiceroomlogo{
+    display: flex;
+    align-items: center;
+    height: 6vh;
+}
+.voiceroomlogotext{
+    margin-left: 1vh;
+    font-family: TTNorms-Regular;
+    color: white;
+    letter-spacing: 0.001em;
+    font-size: 1.1em;
+    font-weight: normal;
+}
+.voiceRoomPlayerSettings {
+    display: flex;
+    height: 3vh;
+    width: 48vh;
+    min-width: 397px;
+    margin-left: 5vh;
+    margin-bottom: 1vh;
+    border: solid 1px #dcdcdc;
+    border-radius: 10px;
+    background: none;
+}
+.voiceRoomPlayerList {
+    width: 57vh;
+    min-width: 464px;
+    height: 12vh;
+    overflow: auto;
+    visibility: visible;
+}
+.radiomin {
+    height: 1.6vh;
+    margin-left: 4vh;
+}
+.hiddenSetting {
+    margin-left: 2vh;
+    height: 1vh;
+    width: 1vh;
+    background-image: url(img/hiddenSettingsOn.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    border-radius: 9px;
+    cursor: pointer;
+}
+#hiddenSetting {
+    display: none;
+}
+#hiddenSetting:checked + .hiddenSetting {
+    margin-left: 2vh;
+    height: 1vh;
+    width: 1vh;
+    background-image: url(img/hiddenSettingsOff.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    border-radius: 9px;
+    cursor: pointer;
+}
+.userloc {
+    height: 1vh;
+    margin-left: 1.5vh;
+}
+.th {
+    display: flex;
+    align-items: center;
+    min-width: 9vh;
+}
+.userName {
+    margin-left: 1vh;
+    font-family: TTNorms-Regular;
+    color: white;
+    font-size: 0.7em;
+    font-weight: normal;
+}
+.imgdistance {
+    margin-left: 7vh;
+    height: 1.1vh;
+}
+.margin {
+    margin: 0.2vh;
+}
+.micSettings {
+    margin-left: 7vh;
+    height: 1.5vh;
+}
+.sliderP {
+    -webkit-appearance: none;
+    min-width: 157px;
+    height: 3px;
+    margin-left: 1vh;
+    background: linear-gradient(90deg, #eb2e4a 0%, #4c2027 0%);
+    border-radius: 40px;
+}
+.sliderP::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 7px;
+    background: #eb2e4a;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 4px 4px 35px 12px rgba(189,0,40,0.4);
+}
+.slidervalue {
+    height: 2vh;
+    width: 3vh;
+}
+.owerlay {
+    position: absolute;
+    height: 231px;
+    width: 132px;
+    top: 320px;
+    left: 1200px;
+    cursor: pointer;
+    background-color: #ffffff77;
+}
+.owerlayRoomName {
+    font-family: TTNormal-Light;
+    font-size: 1.6em;
+    margin-left: 1vh;
+    width: 14vh;
+    color: #ffffff;
+}
+.owerlayPlayer {
+    font-family: TTNorms-Regular;
+    color: #ffffff;
+    font-size: 0.8em;
+}
+.owerlayRadiomin {
+    height: 2.3vh;
+    margin-top: 0.3vh;
+    margin-left: 1vh;
+}
+.owerlayPlayerDistance {
+    font-family: TTNorms-Regular;
+    color: #ffffff;
+    font-size: 0.8em;;
+}
+.owerlayRadiominImg {
+    height: 1.3vh;
+}
+.owerlayMicrophone {
+    height: 5vh;
+    position: absolute;
+    z-index: 1000;
+    left: 1606.5px;
+    top: 248px;
+    cursor: pointer;
+}
+.owerlayVolumeOn {
+    height: 5vh;
+    position: absolute;
+    z-index: 1000;
+    left: 1498.5px;
+    top: 246px;
+    cursor: pointer;
 }
